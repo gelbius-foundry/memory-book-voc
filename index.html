@@ -1,0 +1,1006 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Homework Problem — Memory Book &amp; Audio Archive VOC</title>
+<meta name="description" content="Voice-of-customer research on the memory book and audio archive category (Storyworth, Remento, Kindred Tales, StoryTerrace): what buyers say on Reddit and X, and the messages incumbents run on Meta.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="The Homework Problem">
+<meta property="og:description" content="VOC research on the memory book and audio archive category, plus a synthesis of incumbent Meta ad messaging.">
+<meta property="og:type" content="article">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><text y=%2213%22 font-size=%2213%22>&#128214;</text></svg>">
+</head>
+<body>
+<style>
+  :root{
+    --paper:#F1F2EE;
+    --surface:#FBFBF9;
+    --ink:#161A19;
+    --muted:#6E7873;
+    --rule:#D5D8D2;
+    --accent:#0F6F62;
+    --accent-soft:#E2EDEA;
+    --oxide:#A8492B;
+    --oxide-soft:#F3E4DC;
+    --shadow:0 1px 2px rgba(22,26,25,.06), 0 8px 24px -16px rgba(22,26,25,.28);
+
+    --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+
+    --col:68ch;
+    --s1:.35rem; --s2:.7rem; --s3:1.1rem; --s4:1.8rem; --s5:2.8rem; --s6:4.2rem;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --paper:#0F1312;
+      --surface:#161B1A;
+      --ink:#E7EBE7;
+      --muted:#8C9791;
+      --rule:#272F2D;
+      --accent:#52C3B0;
+      --accent-soft:#12302C;
+      --oxide:#E0906B;
+      --oxide-soft:#33201A;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+    }
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16.5px;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--col);margin:0 auto;padding:0 1.4rem}
+  .wide{max-width:min(112ch,100% - 2.8rem);margin:0 auto}
+
+  a{color:var(--accent);text-underline-offset:2px;text-decoration-thickness:1px}
+  a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+  /* ---------- masthead ---------- */
+  header.mast{
+    border-bottom:1px solid var(--rule);
+    padding:var(--s6) 0 var(--s5);
+    margin-bottom:var(--s5);
+  }
+  .kicker{
+    font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--accent);display:flex;flex-wrap:wrap;gap:.9rem;margin-bottom:var(--s3);
+  }
+  h1{
+    font-family:var(--sans);
+    font-size:clamp(2.3rem,6.5vw,3.6rem);
+    line-height:1.02;letter-spacing:-.035em;font-weight:680;
+    margin:0 0 var(--s3);text-wrap:balance;
+  }
+  .standfirst{font-size:1.12rem;color:var(--muted);margin:0;max-width:58ch}
+
+  .stamp{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));
+    gap:var(--s3);margin-top:var(--s4);
+    padding-top:var(--s3);border-top:1px solid var(--rule);
+  }
+  .stamp div{display:flex;flex-direction:column;gap:.15rem}
+  .stamp dt,.stamp .lab{
+    font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  }
+  .stamp .val{font-family:var(--mono);font-size:1.32rem;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+
+  /* ---------- sections ---------- */
+  section{margin:0 0 var(--s6)}
+  .seclab{
+    font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 var(--s2);
+    display:flex;align-items:baseline;gap:.7rem;
+  }
+  .seclab::after{content:"";flex:1;height:1px;background:var(--rule)}
+  h2{
+    font-size:clamp(1.5rem,3.4vw,1.95rem);line-height:1.14;letter-spacing:-.025em;
+    font-weight:660;margin:0 0 var(--s3);text-wrap:balance;
+  }
+  h3{font-size:1.08rem;line-height:1.3;letter-spacing:-.012em;font-weight:650;margin:var(--s4) 0 var(--s2)}
+  p{margin:0 0 var(--s3)}
+  .lede{font-size:1.06rem}
+  strong{font-weight:650}
+  em.term{font-style:normal;font-weight:640;color:var(--accent)}
+
+  /* ---------- verbatim quotes: the customer's own voice ---------- */
+  blockquote{
+    margin:var(--s3) 0;padding:0 0 0 var(--s3);
+    border-left:2px solid var(--accent);
+    font-family:var(--serif);font-size:1.06rem;line-height:1.52;
+  }
+  blockquote p{margin:0 0 var(--s2)}
+  blockquote:last-child{margin-bottom:0}
+  .attrib{
+    display:block;font-family:var(--mono);font-size:.63rem;letter-spacing:.09em;
+    text-transform:uppercase;color:var(--muted);margin-top:.3rem;
+  }
+  .attrib a{color:var(--muted)}
+  .attrib a:hover{color:var(--accent)}
+
+  /* ---------- ranked findings ---------- */
+  .finding{
+    border-top:1px solid var(--rule);
+    padding:var(--s4) 0 0;margin:0 0 var(--s4);
+  }
+  .fhead{display:flex;align-items:baseline;gap:.8rem;margin-bottom:var(--s2)}
+  .rank{
+    font-family:var(--mono);font-size:.72rem;font-variant-numeric:tabular-nums;
+    color:var(--muted);letter-spacing:.06em;padding-top:.18rem;flex:none;
+  }
+  .fhead h3{margin:0;flex:1}
+  .meter{
+    height:3px;background:var(--rule);border-radius:2px;overflow:hidden;margin:var(--s2) 0 var(--s3);
+  }
+  .meter i{display:block;height:100%;width:var(--v,50%);background:var(--accent);border-radius:2px}
+  .meter.warn i{background:var(--oxide)}
+  .evid{
+    font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:var(--s2);
+  }
+
+  /* ---------- tags ---------- */
+  .tag{
+    font-family:var(--mono);font-size:.6rem;letter-spacing:.11em;text-transform:uppercase;
+    padding:.16rem .42rem;border-radius:3px;white-space:nowrap;
+    background:var(--accent-soft);color:var(--accent);
+  }
+  .tag.ox{background:var(--oxide-soft);color:var(--oxide)}
+
+  /* ---------- tables ---------- */
+  .scroll{overflow-x:auto;margin:var(--s3) 0;border:1px solid var(--rule);border-radius:4px;background:var(--surface)}
+  table{border-collapse:collapse;width:100%;font-size:.86rem;min-width:44rem}
+  th,td{text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--rule);vertical-align:top}
+  thead th{
+    font-family:var(--mono);font-size:.6rem;letter-spacing:.11em;text-transform:uppercase;
+    color:var(--muted);font-weight:400;white-space:nowrap;
+    position:sticky;top:0;background:var(--surface);
+  }
+  tbody tr:last-child td{border-bottom:none}
+  td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+  td.brand{font-weight:640;white-space:nowrap}
+  .adcopy{font-family:var(--serif);font-size:.94rem;line-height:1.42}
+
+  /* ---------- callout ---------- */
+  .callout{
+    background:var(--surface);border:1px solid var(--rule);border-left:3px solid var(--accent);
+    border-radius:4px;padding:var(--s3);margin:var(--s4) 0;box-shadow:var(--shadow);
+  }
+  .callout.risk{border-left-color:var(--oxide)}
+  .callout p:last-child{margin-bottom:0}
+  .callout .clab{
+    font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);margin:0 0 var(--s2);display:block;
+  }
+  .callout.risk .clab{color:var(--oxide)}
+
+  /* ---------- gap grid ---------- */
+  .gaps{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:4px;overflow:hidden;margin:var(--s3) 0}
+  .gap{background:var(--surface);padding:var(--s3)}
+  .gap h4{margin:0 0 .3rem;font-size:.98rem;letter-spacing:-.01em}
+  .gap p{margin:0;font-size:.9rem;color:var(--muted)}
+  .gap .st{font-family:var(--mono);font-size:.6rem;letter-spacing:.11em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:.45rem}
+  .gap.taken .st{color:var(--oxide)}
+
+  /* ---------- angles ---------- */
+  ol.angles{list-style:none;counter-reset:a;padding:0;margin:var(--s3) 0;display:grid;gap:var(--s3)}
+  ol.angles li{
+    counter-increment:a;background:var(--surface);border:1px solid var(--rule);
+    border-radius:4px;padding:var(--s3);position:relative;
+  }
+  ol.angles li::before{
+    content:counter(a,decimal-leading-zero);
+    font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;color:var(--muted);
+    display:block;margin-bottom:.4rem;
+  }
+  .hook{font-family:var(--serif);font-size:1.12rem;line-height:1.34;margin:0 0 .5rem;display:block}
+  .basis{font-size:.86rem;color:var(--muted);margin:0}
+
+  ul.plain{margin:0 0 var(--s3);padding-left:1.1rem}
+  ul.plain li{margin-bottom:.4rem}
+
+  ul.swipe{list-style:none;margin:0 0 var(--s3);padding:0;display:flex;flex-wrap:wrap;gap:.5rem}
+  ul.swipe li{
+    font-family:var(--serif);font-size:.98rem;line-height:1.35;
+    background:var(--surface);border:1px solid var(--rule);border-radius:3px;
+    padding:.4rem .7rem;
+  }
+
+  details{border-top:1px solid var(--rule);padding:var(--s3) 0}
+  summary{cursor:pointer;font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  details[open] summary{margin-bottom:var(--s3);color:var(--accent)}
+
+  footer{border-top:1px solid var(--rule);margin-top:var(--s6);padding:var(--s4) 0 var(--s6);color:var(--muted);font-size:.86rem}
+
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<header class="mast">
+  <div class="wrap">
+    <div class="kicker">
+      <span>Voice-of-customer brief</span>
+      <span>Memory book &amp; audio archive</span>
+      <span>16 Aug 2026</span>
+    </div>
+    <h1>The homework problem</h1>
+    <p class="standfirst">
+      Buyers in this category are not shopping for a book. They are trying to beat a
+      deadline they can't see. The incumbents sell them a writing assignment instead —
+      and that gap is the entry point.
+    </p>
+
+    <div class="stamp">
+      <div><span class="lab">Reddit threads</span><span class="val">51</span></div>
+      <div><span class="lab">Comments read</span><span class="val">967</span></div>
+      <div><span class="lab">X posts</span><span class="val">118</span></div>
+      <div><span class="lab">Meta ads</span><span class="val">187</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="wrap">
+  <p class="seclab">The read</p>
+  <h2>What the evidence says</h2>
+  <p class="lede">
+    Demand in this category is driven by <em class="term">anticipatory regret</em>, not by
+    an interest in books, genealogy, or writing. The highest-engagement posts across both
+    platforms are people who already missed their window, telling everyone else not to.
+    That emotion is abundant, freely expressed, and almost entirely unmonetised by
+    the current message set.
+  </p>
+  <p>
+    The category's structural weakness is that every major product converts that urgent
+    emotional impulse into <strong>a recurring obligation for an elderly person</strong>.
+    The single most repeated complaint in the corpus is not price, quality, or trust — it is
+    that the gift feels like schoolwork. Recipients quit, and the buyer is the one left
+    holding the disappointment.
+  </p>
+  <p>
+    Meanwhile the ad market has consolidated onto two claims. Storyworth runs
+    <em class="term">preservation</em> ("Preserve your family's stories", on 91 of its 100 active
+    US ads). Remento runs <em class="term">effort removal</em> ("No Writing Required", on 65 of 66).
+    Both are already contested, and neither addresses the three objections that actually kill
+    the purchase on Reddit: renewal traps, no export, and unclear rights over the family's words.
+  </p>
+
+  <div class="callout">
+    <span class="clab">Positioning thesis</span>
+    <p>
+      The open ground is <strong>custody, not capture</strong>. Every incumbent sells getting
+      the stories in. Nobody advertises getting them out — owned outright, exported in full,
+      never rented back, never fed to a model. Pair that with a
+      <strong>done-for-you interview</strong> (we do the asking) rather than a prompt that lands
+      in an 82-year-old's inbox every Monday, and you are answering the two loudest complaints
+      in the category with claims no competitor is currently running.
+    </p>
+  </div>
+</section>
+
+<section class="wrap">
+  <p class="seclab">Method</p>
+  <h2>How this was built</h2>
+  <p>
+    Primary sources only — no secondary market reports. Reddit and X were pulled through the
+    ScrapeCreators API; Meta creative came from the Meta Ad Library. Every quote below is
+    verbatim and links to its original comment or post.
+  </p>
+  <ul class="plain">
+    <li><strong>Reddit</strong> — 51 unique threads, 967 comments, across 13 subreddits
+      (r/Genealogy, r/AgingParents, r/dementia, r/Alzheimers, r/AskOldPeople, r/GiftIdeas,
+      r/gifts, r/GriefSupport, r/CaregiverSupport, r/selfpublish, r/AncestryDNA, r/scrapbooking).</li>
+    <li><strong>X</strong> — 118 posts surfaced via site-scoped search and hydrated individually,
+      plus 106 brand tweets from incumbent accounts.</li>
+    <li><strong>Meta</strong> — 187 active US ads across Storyworth, Remento, Kindred Tales and
+      StoryTerrace, plus a 180-ad category keyword sweep covering 42 advertisers.</li>
+  </ul>
+  <div class="callout risk">
+    <span class="clab">Read this before quoting the numbers</span>
+    <p>
+      Meta's Ad Library exposes <strong>currently active</strong> ads only, so creative age reflects
+      the present flight, not full history, and it publishes no spend or impression figures for
+      commercial ads — ad counts are a proxy for emphasis, not budget. The Storyworth pull captured
+      100 of a reported 303 active ads before pagination ended; Remento, Kindred Tales and
+      StoryTerrace were captured in full. Intensity scores below are my read of frequency and
+      heat across the corpus, not a statistical measure.
+    </p>
+  </div>
+</section>
+
+<section class="wrap">
+  <p class="seclab">Demand</p>
+  <h2>The emotion that actually moves people</h2>
+  <p>
+    The buying trigger is a countdown. It shows up as a diagnosis, a birthday, a near-miss, or
+    a death in someone else's family. What people articulate is not "I want a book" — it is
+    "I want to still be able to hear them."
+  </p>
+
+  <blockquote>
+    <p>Found a recording of a letter to my mother from my grandfather some 8 years after he passed
+      away… I did fall on the floor. Took me 10 minutes to get my shit together enough to go show
+      mom… who also fell on the floor. To hear a voice from the grave. A voice that meant so very
+      much to me. Yeah, make a recording for your kids and grand kids. It's important…</p>
+    <span class="attrib"><a href="https://www.reddit.com/r/AskOldPeople/comments/kd3t4a/comment/gfvzwvl/">r/AskOldPeople · 8 pts</a></span>
+  </blockquote>
+
+  <blockquote>
+    <p>This is the last photo taken of me and my dad together. He died last week. There are million
+      things to say but I only want to say this: I urge you to sit down with your parents and record
+      their voices/stories. Ask them big questions. One day you'll want to hear them again.</p>
+    <span class="attrib"><a href="https://x.com/tomrosenthal/status/1134339642155835392">X · @tomrosenthal · 2,918 likes</a></span>
+  </blockquote>
+
+  <blockquote>
+    <p>Omg yes, and do it immediately with as much of their essence as possible. I meant to do it
+      with my grandmother and more recently my uncle and I never got around to it and I truly regret
+      that… Do it, now.</p>
+    <span class="attrib"><a href="https://www.reddit.com/r/Genealogy/comments/1pcsnbt/comment/ns08xta/">r/Genealogy · 4 pts</a></span>
+  </blockquote>
+
+  <p>
+    Note what the seller of a memory book is really competing with: a saved voicemail. Multiple
+    people across both platforms describe replaying voicemail as their existing archive — a free,
+    accidental product that already does the emotional job.
+  </p>
+
+  <blockquote>
+    <p>It doesn't get easier, sometimes I listen to her voicemails just to hear her voice again.</p>
+    <span class="attrib"><a href="https://x.com/ElijahSchaffer/status/1286692232846700544">X · @ElijahSchaffer · 1,242 likes</a></span>
+  </blockquote>
+
+  <p>
+    There is a second, distinct buyer the ads almost entirely ignore: <strong>the storyteller
+    themselves</strong>. Older adults describe wanting to be asked, and being surprised anyone cares.
+    This is a first-person market, not only a gifting market.
+  </p>
+
+  <blockquote>
+    <p>High. I've had a pretty interesting life, most of which I never shared with my kids while
+      raising them because I didn't think they'd care. But now that they're young adults, every time
+      I mention something about my past, their jaws drop and they say, "What?? Why have we never heard
+      this?! Why didn't you ever mention it?"</p>
+    <span class="attrib"><a href="https://www.reddit.com/r/AskOldPeople/comments/1k9pvna/comment/mpi3u9n/">r/AskOldPeople</a></span>
+  </blockquote>
+  <blockquote>
+    <p>You become the keeper of the memories as there's no one left to do the job but you.</p>
+    <span class="attrib"><a href="https://www.reddit.com/r/AskOldPeople/comments/1k9pvna/comment/mpgdyby/">r/AskOldPeople</a></span>
+  </blockquote>
+</section>
+
+<section class="wrap">
+  <p class="seclab">Friction · ranked by frequency and heat</p>
+  <h2>Why these products fail their buyers</h2>
+
+  <div class="finding">
+    <div class="fhead"><span class="rank">01</span><h3>It becomes homework</h3></div>
+    <div class="meter"><i style="--v:100%"></i></div>
+    <p class="evid">Most-repeated complaint · appears across r/gifts, r/AgingParents, r/Genealogy, r/dementia</p>
+    <p>
+      The recipient experiences a weekly writing assignment. This is the mechanism behind
+      churn, refunds, and unfinished books — and it is the one thing the buyer cannot see
+      before purchase.
+    </p>
+    <blockquote>
+      <p>I work with Alzheimer's patients and their caregivers and one of the caregivers told me
+        that they dread when the prompts arrive from story worth and hate doing them. They said
+        they'd rather just talk to the family about these things instead of having "assignments".</p>
+      <span class="attrib"><a href="https://www.reddit.com/r/Gifts/comments/1hsthad/comment/m5834bz/">r/gifts · 10 pts</a></span>
+    </blockquote>
+    <blockquote>
+      <p>Yes I did! She sent it back for a refund after a couple months. She said it was like having
+        a term paper hanging over her all the time…</p>
+      <span class="attrib"><a href="https://www.reddit.com/r/AgingParents/comments/1fyue8j/comment/lr0tadq/">r/AgingParents · 3 pts</a></span>
+    </blockquote>
+    <blockquote>
+      <p>But I felt that I had just been given the task of a 50 page homework essay. Oof. As someone
+        with arthritis and who hadn't done a handwritten complete paragraph in decades this was not
+        going to be an easy task.</p>
+      <span class="attrib"><a href="https://www.reddit.com/r/AgingParents/comments/1fyue8j/comment/lqxvi9w/">r/AgingParents · 5 pts</a></span>
+    </blockquote>
+  </div>
+
+  <div class="finding">
+    <div class="fhead"><span class="rank">02</span><h3>The renewal trap</h3></div>
+    <div class="meter warn"><i style="--v:86%"></i></div>
+    <p class="evid">Described as the single biggest driver of negative reviews · r/GiftIdeas, r/Genealogy, r/dementia</p>
+    <p>
+      The subscription clock and the book are coupled. Miss the window and the family's own
+      material is behind another year's paywall. This reads to buyers as a trap, not a price.
+    </p>
+    <blockquote>
+      <p>The downside to services like Storyworth is the subscription model. I paid for a year of
+        Storyworth for my mom one time, but she didn't finish it in a year, and I have to pay for
+        another year if I want to access the information.</p>
+      <span class="attrib"><a href="https://www.reddit.com/r/Genealogy/comments/1pqba6c/comment/nuw2fcz/">r/Genealogy · 2 pts</a></span>
+    </blockquote>
+    <blockquote>
+      <p>…if you don't order your book immediately before your 1 year of questions expires, you have
+        to pay for a second year subscription for them to send you a book and customer service refused
+        to make exceptions. This was probably the number 1 negative review.</p>
+      <span class="attrib"><a href="https://www.reddit.com/r/GiftIdeas/comments/rlfb2n/comment/j3upphx/">r/GiftIdeas · 5 pts</a></span>
+    </blockquote>
+    <blockquote>
+      <p>Remento seems to contain the best features, but I really don't want to pay the $99/mo for
+        as long as we want to keep it. The reocurring fee seems to be a bit large, considering you can
+        get 100x the cloud storage anywhere else for a fraction of the cost.</p>
+      <span class="attrib"><a href="https://www.reddit.com/r/dementia/comments/18jiwfq/comment/mlkh77d/">r/dementia</a></span>
+    </blockquote>
+  </div>
+
+  <div class="finding">
+    <div class="fhead"><span class="rank">03</span><h3>You can't get your family's material back out</h3></div>
+    <div class="meter warn"><i style="--v:78%"></i></div>
+    <p class="evid">Export, backup, and platform-death risk · r/AgingParents, r/Genealogy, r/dementia</p>
+    <p>
+      Sophisticated buyers — the genealogy segment especially — evaluate these products as
+      <strong>archives</strong>, and archives are judged on retrievability. No incumbent
+      advertises against this.
+    </p>
+    <blockquote>
+      <p>Also note that there is NO export option for text, and audio can only be downloaded one
+        story at a time. That is a real pain if a lot of stories are recorded. The stories may be
+        yours, but they are hard to retrieve.</p>
+      <span class="attrib"><a href="https://www.reddit.com/r/AgingParents/comments/1mtvdpr/comment/nb7iv1s/">r/AgingParents · 2 pts</a></span>
+    </blockquote>
+    <blockquote>
+      <p>I would a service that would do this for me and give me some file output. but probably not
+        an app or some subscription thing. I want to be able to pass along and own the data. If this
+        is an app I risk it being lost if something happens with the company.</p>
+      <span class="attrib"><a href="https://www.reddit.com/r/Genealogy/comments/1pcsnbt/comment/nuowh6x/">r/Genealogy</a></span>
+    </blockquote>
+    <blockquote>
+      <p>Just want to share that you should definitely, definitely back up all of your content with
+        Storyworth. Unfortunately, all of my dad's stories were lost with Storyworth.</p>
+      <span class="attrib"><a href="https://www.reddit.com/r/dementia/comments/18jiwfq/comment/loy0yza/">r/dementia</a></span>
+    </blockquote>
+    <p>
+      A related and durable concern: format obsolescence. This audience has already lost one
+      generation of recordings.
+    </p>
+    <blockquote>
+      <p>One of the problems with tech is that it gets outdated. One of my cousins interviewed our
+        grandmother for a school project… On a CD. I don't have anything to play a CD on anymore.
+        We don't have anything to watch those old camcorder tapes on anymore… whatever you do, I would
+        100% recommend transcribing them.</p>
+      <span class="attrib"><a href="https://www.reddit.com/r/Genealogy/comments/1pcsnbt/comment/ns0gvoy/">r/Genealogy · 3 pts</a></span>
+    </blockquote>
+  </div>
+
+  <div class="finding">
+    <div class="fhead"><span class="rank">04</span><h3>Who owns the words — and does it train a model?</h3></div>
+    <div class="meter warn"><i style="--v:62%"></i></div>
+    <p class="evid">Terms-of-service and AI-training objections · r/GiftIdeas, r/Genealogy</p>
+    <blockquote>
+      <p>Their privacy policy looks fairly promising, but their terms of service was horrible. A
+        worldwide license to "use any information in any form, broadcast, publishing, …that we choose"
+        policy. Oh, and you can't disallow their usage of your private information even if you cancel —
+        it's theirs forever.</p>
+      <span class="attrib"><a href="https://www.reddit.com/r/GiftIdeas/comments/rlfb2n/comment/j3upphx/">r/GiftIdeas · 5 pts</a></span>
+    </blockquote>
+    <blockquote>
+      <p>I would never let an app record family history and generate text. I'd be too worried it
+        would be feeding AI.</p>
+      <span class="attrib"><a href="https://www.reddit.com/r/Genealogy/comments/1pcsnbt/comment/ns2k6e5/">r/Genealogy · 2 pts</a></span>
+    </blockquote>
+    <blockquote>
+      <p>One thing that concerned me was whether putting my little stories out there to Storyworth,
+        do they then have a copyright of my writings?</p>
+      <span class="attrib"><a href="https://www.reddit.com/r/GiftIdeas/comments/rlfb2n/comment/j4cb12f/">r/GiftIdeas · 3 pts</a></span>
+    </blockquote>
+    <p>
+      This objection is intensifying as AI moves to the centre of every competitor's pitch. It is
+      simultaneously the category's biggest trust liability and, handled explicitly, its cleanest
+      differentiator.
+    </p>
+  </div>
+
+  <div class="finding">
+    <div class="fhead"><span class="rank">05</span><h3>The physical book disappoints</h3></div>
+    <div class="meter"><i style="--v:54%"></i></div>
+    <p class="evid">Print quality, damage in transit, black-and-white photos, per-copy cost</p>
+    <blockquote>
+      <p>Reviews of the books themselves was also bad for 2 reasons. First, the quality of the books
+        was a consistent issue in all reviews. Several people mentioned it's cheaper and higher quality
+        to have your book published somewhere else.</p>
+      <span class="attrib"><a href="https://www.reddit.com/r/GiftIdeas/comments/rlfb2n/comment/j3upphx/">r/GiftIdeas · 5 pts</a></span>
+    </blockquote>
+    <blockquote>
+      <p>Find out how much the copies cost. My dad did this and the books cost $100 each, and they
+        all arrived damaged, different destinations so they were shipped damaged.</p>
+      <span class="attrib"><a href="https://www.reddit.com/r/AgingParents/comments/1fyue8j/comment/lr0g5v1/">r/AgingParents · 3 pts</a></span>
+    </blockquote>
+    <blockquote>
+      <p>I decided to go with storykeeper.com because it prints the photos in color (Storyworth pix
+        inside the book are only black &amp; white)…</p>
+      <span class="attrib"><a href="https://www.reddit.com/r/AgingParents/comments/1fyue8j/comment/m4qfwqq/">r/AgingParents · 2 pts</a></span>
+    </blockquote>
+  </div>
+
+  <div class="finding">
+    <div class="fhead"><span class="rank">06</span><h3>Sold as a gift, doesn't work as one</h3></div>
+    <div class="meter"><i style="--v:38%"></i></div>
+    <p class="evid">Single strong signal, but a clean and fixable product failure</p>
+    <blockquote>
+      <p>Advertised as a gift, but not actually giftable. I was forced to create the account with my
+        own personal information and then give those credentials to the recipient. That's unacceptable
+        and feels misleading. Now I'm out $60 with an awkward, privacy-compromising mess instead of a gift.</p>
+      <span class="attrib"><a href="https://www.reddit.com/r/GiftIdeas/comments/rlfb2n/comment/nvyw2g4/">r/GiftIdeas</a></span>
+    </blockquote>
+  </div>
+
+  <div class="finding">
+    <div class="fhead"><span class="rank">07</span><h3>The prompts can wound</h3></div>
+    <div class="meter"><i style="--v:32%"></i></div>
+    <p class="evid">Lower frequency, high severity — a churn and reputation risk</p>
+    <blockquote>
+      <p>I tried to do Storyworth with my Mother-in-law, and she asked me to cancel it because the
+        questions she was given were triggering because of her difficult childhood.</p>
+      <span class="attrib"><a href="https://www.reddit.com/r/Genealogy/comments/1pqba6c/comment/nuw2fcz/">r/Genealogy · 2 pts</a></span>
+    </blockquote>
+    <blockquote>
+      <p>Also be prepared for your parents to potentially give a VERY different take on your childhood
+        than what you experienced. My sister upon receiving the monthly emailed chapters went into
+        therapy for the first time.</p>
+      <span class="attrib"><a href="https://www.reddit.com/r/AgingParents/comments/1fyue8j/comment/lr0g5v1/">r/AgingParents · 3 pts</a></span>
+    </blockquote>
+  </div>
+</section>
+
+<section class="wrap">
+  <p class="seclab">Competitive set</p>
+  <h2>The buyer is drowning, not choosing</h2>
+  <p>
+    The category has no shortlist. A single r/Genealogy comment names fourteen competitors
+    unprompted and gives up — and that is before counting the AI-biographer startups founders
+    are seeding directly into these threads.
+  </p>
+  <blockquote>
+    <p>I have seen the following sites that all provide a similar service but with slight
+      differences… I'm still trying to narrow them down myself, and it's quite overwhelming. Here's
+      the list so far: Storii StoryWorth Remento Meminto Memorygram My Life in a Book A Life Untold
+      Storykeeper Memowrite TellMel KindredTales Tayle Story Terrace Viography.co StoriedLife</p>
+    <span class="attrib"><a href="https://www.reddit.com/r/Genealogy/comments/1l00zze/comment/mwlojks/">r/Genealogy · 2 pts</a></span>
+  </blockquote>
+  <p>
+    <strong>Strategic implication:</strong> a feature-comparison entry strategy is a losing move —
+    the buyer has already refused to run that comparison. What breaks the tie is a single, legible
+    promise that resolves a known fear.
+  </p>
+
+  <h3>The real substitute is DIY, and it is good enough</h3>
+  <p>
+    The most upvoted practical advice in the corpus is not a product. It is a phone, a set of
+    questions, and a print service — recommended even by a competitor's own representative.
+  </p>
+  <blockquote>
+    <p>A modern smartphone placed close to the storyteller does a good enough job of capturing audio
+      on the Voice Notes app… you can use free trials of transcription software like Otter.ai, and
+      you'll have decent transcripts. You can then edit in Google docs, could choose to add photos, and
+      then you can self-serve print a book using Blurb.com.</p>
+    <span class="attrib"><a href="https://www.reddit.com/r/AgingParents/comments/1mtvdpr/comment/n9mwf40/">r/AgingParents · 2 pts, from a No Story Lost rep</a></span>
+  </blockquote>
+  <blockquote>
+    <p>There doesn't always need to be a specific app for things. If family members can't figure out
+      how to drop files in a Google Drive folder they'll probably be less likely to download and learn
+      a new app/service.</p>
+    <span class="attrib"><a href="https://www.reddit.com/r/Genealogy/comments/1pqba6c/comment/nutcfnx/">r/Genealogy · 3 pts</a></span>
+  </blockquote>
+
+  <h3>What experienced interviewers know that no product ships</h3>
+  <p>
+    The single highest-scoring comment in the entire corpus (42 pts) is about interview craft — and
+    it says direct questions are the wrong instrument.
+  </p>
+  <blockquote>
+    <p>Don't be surprised if you ask them questions and they say they don't know, but then suddenly
+      tell you a lot things you may have already asked when looking at old photographs. I've found that
+      direct questions, interview style don't always work, but prompting them by showing photos, or
+      asking about events, or what they wore or what they ate, often brought back lots of useful and
+      interesting memories.</p>
+    <span class="attrib"><a href="https://www.reddit.com/r/Genealogy/comments/8tyujx/comment/e1bba69/">r/Genealogy · 42 pts</a></span>
+  </blockquote>
+  <blockquote>
+    <p>I also recommend sitting down with your grandparents together because they will help each other
+      remember things. One thing I will always treasure is getting on film my grandparents agreeing that
+      it was love at first sight for both of them.</p>
+    <span class="attrib"><a href="https://www.reddit.com/r/Genealogy/comments/1pcsnbt/comment/ns0fpcp/">r/Genealogy · 2 pts</a></span>
+  </blockquote>
+  <p>
+    Two shippable product ideas fall straight out of this: <strong>photo-triggered prompting</strong>
+    (upload the album, let the pictures ask the questions) and <strong>two-person sessions</strong> —
+    which a customer explicitly asked Remento for, in public, and has not received.
+  </p>
+  <blockquote>
+    <p>I really like the idea of remento, but I wish you'd offer an option for 2 people to create one
+      book! My mom is unlikely to share a whole lot but would probably do a few prompts.. my dad is the
+      bigger talker. I would love to get them one they could create together!</p>
+    <span class="attrib"><a href="https://www.reddit.com/r/Genealogy/comments/1pqba6c/comment/ojrjsv7/">r/Genealogy · 2 pts</a></span>
+  </blockquote>
+</section>
+
+<section class="wrap">
+  <p class="seclab">Channel note</p>
+  <h2>X is not where this category lives</h2>
+  <p>
+    Worth stating plainly, because it changes a media plan. Reddit carries dense, specific,
+    product-level evaluation — people naming competitors, quoting prices, describing refunds.
+    X carries the <strong>emotion</strong> but almost no purchase deliberation. The category's
+    strongest X posts are grief and legacy sentiment from people not selling anything, and they
+    travel far.
+  </p>
+  <blockquote>
+    <p>My grandmother would have been 95 years old today. A few years ago, my mom hired a writer to sit
+      down with her and document stories from her life. I think everyone should do this: The process
+      brought my grandmother immense joy—and the result will bring my family joy for years</p>
+    <span class="attrib"><a href="https://x.com/SahilBloom/status/1767527088951550423">X · @SahilBloom · 1,135 likes · 192k views</a></span>
+  </blockquote>
+  <p>
+    Branded X presence is negligible: Storyworth's account is effectively dormant with legacy posts,
+    and no active Remento account surfaced. Product-specific X mentions are rare but unusually potent
+    when they appear — and the most affecting one is a warning about waiting.
+  </p>
+  <blockquote>
+    <p>I got my dad @Storyworth. He kept sending me chapters to read but I wanted to wait for the whole
+      book. Now that he's gone, I wish I had taken the time so we could have chatted about them. At least
+      I can hear his voice in my head when I read. Happy 1st heavenly birthday, dad 🫶</p>
+    <span class="attrib"><a href="https://x.com/MadPottersBK/status/2065618237224890616">X · @MadPottersBK</a></span>
+  </blockquote>
+  <p>
+    <strong>Implication:</strong> treat X as an organic and creator-seeding surface for the regret
+    narrative, not a performance channel. Put paid budget on Meta, and put listening effort on Reddit —
+    where, notably, founders (including Remento's CEO) are already answering customers in-thread.
+  </p>
+</section>
+
+<section class="wide">
+  <p class="seclab">Appendix · Meta Ad Library</p>
+  <h2>The messages incumbents are actually buying</h2>
+  <p class="lede" style="max-width:68ch">
+    Pulled 16 Aug 2026 from active US ads. What stands out is message concentration: the two
+    market leaders each run essentially one headline at enormous variant volume, and differentiate
+    through creative format rather than claim.
+  </p>
+
+  <div class="scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Advertiser</th><th class="num">Active ads</th><th class="num">Video</th>
+          <th>Dominant headline</th><th class="num">Share</th><th>CTA</th><th>Strategy</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="brand">Storyworth</td><td class="num">100<span style="color:var(--muted)"> / 303</span></td><td class="num">15%</td>
+          <td>“Preserve your family's stories”</td><td class="num">91%</td><td>Shop&nbsp;now</td>
+          <td>Static-image scale, proof-stacked</td>
+        </tr>
+        <tr>
+          <td class="brand">Remento</td><td class="num">66</td><td class="num">98%</td>
+          <td>“No Writing Required”</td><td class="num">98%</td><td>Shop&nbsp;now</td>
+          <td>Single-hook video saturation</td>
+        </tr>
+        <tr>
+          <td class="brand">Kindred Tales</td><td class="num">12</td><td class="num">8%</td>
+          <td>“Stories Worth Keeping Forever”</td><td class="num">42%</td><td>Shop&nbsp;now</td>
+          <td>Most varied; persona + offer testing</td>
+        </tr>
+        <tr>
+          <td class="brand">StoryTerrace</td><td class="num">9</td><td class="num">44%</td>
+          <td>“Give the Gift of Storytelling”</td><td class="num">56%</td><td>Get&nbsp;quote</td>
+          <td>High-ticket lead gen, ghostwritten</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="wrap" style="padding:0">
+    <h3>Storyworth — preservation plus overwhelming proof</h3>
+    <p>
+      Three headlines across 100 ads and only four distinct body variants. Variation lives entirely
+      in imagery. The body copy leads with scale credentials rather than emotion, then closes on
+      inheritance.
+    </p>
+    <blockquote>
+      <p>Storyworth makes it easy for the people you love to share their life stories and preserves
+        them in a beautiful hardcover book.<br>
+        📖 35 million stories shared<br>
+        ⭐️ 50k+ five star reviews on Trust Pilot<br>
+        🫂 A gift that will last generations</p>
+      <span class="attrib">Meta Ad Library · Storyworth · active, 91 of 100 ads</span>
+    </blockquote>
+    <p>
+      Their one emotionally-led variant is also their sharpest, and it is aimed at the storyteller
+      rather than the gifter — a segment the rest of their buy ignores:
+    </p>
+    <blockquote>
+      <p>One day, your stories are all your family will have of you. Make sure they're in your words.</p>
+      <span class="attrib">Meta Ad Library · Storyworth · “Preserve your legacy” · 8 ads</span>
+    </blockquote>
+
+    <h3>Remento — one hook, at full volume, on video</h3>
+    <p>
+      65 of 66 active ads are video and 65 of 66 carry the same headline. Every proof point is
+      engineered against the homework objection: no writing, no app, no passwords. All 66 launched
+      within a 25-day window — a total creative refresh, not an accumulation.
+    </p>
+    <blockquote>
+      <p>Their voice. Their stories. Forever.<br><br>
+        One day you'll wish you could hear their voice again. Remento makes sure you can.<br><br>
+        🎙️ They record answers to weekly prompts by simply speaking. No writing, no app, no passwords.<br>
+        ✨ Our Speech-to-Story™ technology turns those recordings into beautifully written stories.<br>
+        📖 Every story becomes a hardcover keepsake book, with a QR code on each chapter that plays back
+        the original voice.<br><br>
+        “Remento isn't just preserving memories. It's preserving the actual voice and personality of our
+        loved ones.” — Mark Cuban, Shark Tank</p>
+      <span class="attrib">Meta Ad Library · Remento · active</span>
+    </blockquote>
+
+    <h3>Kindred Tales — the most instructive buy in the category</h3>
+    <p>
+      Smallest spend, widest message test. Six headlines across twelve ads, testing persona
+      targeting, urgency, objection handling and discounting simultaneously. This is where to watch
+      for what the category will say next.
+    </p>
+    <blockquote>
+      <p>The questions always come a little too late. Get their stories down while you still can. A year
+        of memories becomes a hardcover book your grandkids will read.</p>
+      <span class="attrib">Meta Ad Library · Kindred Tales · “Stories Worth Keeping Forever”</span>
+    </blockquote>
+    <blockquote>
+      <p>Dad probably says he doesn't have many stories. Then one question gets him talking.</p>
+      <span class="attrib">Meta Ad Library · Kindred Tales · “Dad's stories, in a book”</span>
+    </blockquote>
+    <p>
+      They are also the only advertiser in the set explicitly selling against the renewal trap —
+      “One-time purchase. Free U.S. shipping.” — and the only one running a discount code (GET20, $20 off).
+    </p>
+
+    <h3>The claim map</h3>
+    <p>
+      Eight distinct message archetypes are in market. Six are crowded. Two matter mostly for what
+      they reveal about where the category is heading.
+    </p>
+  </div>
+
+  <div class="scroll">
+    <table>
+      <thead>
+        <tr><th>Archetype</th><th>Representative line</th><th>Who runs it</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="brand">Preservation</td><td class="adcopy">“Preserve your family's stories”</td><td>Storyworth, ThatCove</td><td><span class="tag ox">Owned</span></td></tr>
+        <tr><td class="brand">Effort removal</td><td class="adcopy">“No Writing Required”</td><td>Remento, Memorygram, Kindred Tales</td><td><span class="tag ox">Contested</span></td></tr>
+        <tr><td class="brand">Voice artifact</td><td class="adcopy">“a QR code on each chapter that plays back the original voice”</td><td>Remento, Kindred Tales</td><td><span class="tag ox">Contested</span></td></tr>
+        <tr><td class="brand">Urgency / regret</td><td class="adcopy">“The questions always come a little too late”</td><td>Kindred Tales, ThatCove</td><td><span class="tag">Underused</span></td></tr>
+        <tr><td class="brand">Gift framing</td><td class="adcopy">“Give the Gift of Storytelling”</td><td>StoryTerrace, Storyworth</td><td><span class="tag ox">Crowded</span></td></tr>
+        <tr><td class="brand">Social proof</td><td class="adcopy">“As seen on Shark Tank” · “50k+ five star reviews”</td><td>Remento, Storyworth</td><td><span class="tag ox">Owned by scale</span></td></tr>
+        <tr><td class="brand">Persona targeting</td><td class="adcopy">“Made for Dads Who'd Rather Talk Than Type”</td><td>Kindred Tales</td><td><span class="tag">Open</span></td></tr>
+        <tr><td class="brand">Price / offer</td><td class="adcopy">“64% Off. Your Story Can't Wait.”</td><td>Memowrite, Kindred Tales</td><td><span class="tag">Discount tail</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="wrap" style="padding:0">
+    <div class="callout risk">
+      <span class="clab">The trap for a new entrant</span>
+      <p>
+        “No writing required” looks like the obvious wedge — it answers the number-one customer
+        complaint. It is already taken three times over. Memorygram runs the near-identical
+        <em>“No writing required. Just your voice and your stories.”</em>, and Kindred Tales
+        advertises its own “Speech-to-Story” alongside Remento's trademarked one. Entering on that
+        claim means buying attention against a Shark Tank–credentialed incumbent running 98% video
+        saturation on the same words.
+      </p>
+    </div>
+
+    <p>
+      The wider sweep also shows a functioning affiliate tail — “Grandma Approved Gifts” resells
+      Memorygram's book at 20% off — and a discount-led segment where Memowrite runs 64%-off
+      promotions with long-form emotional copy. Both are signs of a category whose middle is
+      commoditising on price while the top consolidates on brand.
+    </p>
+  </div>
+</section>
+
+<section class="wrap">
+  <p class="seclab">Recommendation</p>
+  <h2>Where the opening actually is</h2>
+  <p>
+    Crossing the ranked objections against the live claim map: the loudest customer complaints are
+    almost perfectly uncorrelated with what the category advertises. Three of the top four Reddit
+    objections have <strong>zero advertising coverage</strong> from any competitor in the pull.
+  </p>
+
+  <div class="gaps">
+    <div class="gap">
+      <span class="st">Open · no competitor running it</span>
+      <h4>Custody and export</h4>
+      <p>“Download everything, any time — audio, transcripts, full-resolution book files. Yours to keep even if you cancel, even if we disappear.” Answers ranked objection 03.</p>
+    </div>
+    <div class="gap">
+      <span class="st">Open · no competitor running it</span>
+      <h4>Rights and AI</h4>
+      <p>“Your family's stories are never used to train anything. You keep the copyright, in writing.” Answers ranked objection 04, and gets stronger as rivals lean harder on AI.</p>
+    </div>
+    <div class="gap">
+      <span class="st">Nearly open · one ad</span>
+      <h4>No subscription</h4>
+      <p>One-time purchase, no renewal, no clock on the book. Only Kindred Tales touches this, in a single ad. Answers ranked objection 02.</p>
+    </div>
+    <div class="gap">
+      <span class="st">Open · product-led</span>
+      <h4>We do the asking</h4>
+      <p>A real interview — by phone or in person — instead of a weekly prompt in an inbox. Kills the homework problem at the mechanism rather than softening it.</p>
+    </div>
+    <div class="gap taken">
+      <span class="st">Contested · avoid as primary</span>
+      <h4>No writing required</h4>
+      <p>Run it as a supporting proof point, never as the wedge. Three competitors hold it, one with Shark Tank credentials.</p>
+    </div>
+    <div class="gap taken">
+      <span class="st">Owned · avoid</span>
+      <h4>Preservation, generically</h4>
+      <p>“Preserve your family's stories” is Storyworth's phrase at 91% of a 303-ad buy. Do not spend against it.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <span class="clab">Positioning statement to test</span>
+    <p>
+      <strong>For the adult child who can feel the clock running</strong>, we are the only life-story
+      service that <strong>does the interviewing for you</strong> and hands over
+      <strong>everything, permanently — no subscription, no renewal, no rights grab</strong>.
+      Their voice, their words, in your custody forever.
+    </p>
+  </div>
+
+  <p>
+    Two supporting notes on execution. First, <strong>lead creative should be video</strong>: Remento's
+    98%-video buy is the strongest available signal about what performs in this category, and static
+    is where Storyworth's brand scale wins. Second, <strong>the season is now</strong> — Storyworth
+    launched 86 of its 100 active ads in July and August, ramping toward Q4 gifting. Entry creative
+    should be in market and learning before that auction gets expensive.
+  </p>
+</section>
+
+<section class="wrap">
+  <p class="seclab">Swipe file</p>
+  <h2>Customer language, verbatim</h2>
+  <p>
+    Phrases worth lifting into copy exactly as written. These are the words the market already
+    uses — they will always outperform anything written from the brand side.
+  </p>
+
+  <h3>On the homework problem</h3>
+  <ul class="swipe">
+    <li>“like having a term paper hanging over her all the time”</li>
+    <li>“I had just been given the task of a 50 page homework essay”</li>
+    <li>“they dread when the prompts arrive … and hate doing them”</li>
+    <li>“they'd rather just talk to the family … instead of having ‘assignments’”</li>
+    <li>“ended up feeling like she had too much homework”</li>
+  </ul>
+
+  <h3>On ownership and trust</h3>
+  <ul class="swipe">
+    <li>“The stories may be yours, but they are hard to retrieve”</li>
+    <li>“I want to be able to pass along and own the data”</li>
+    <li>“all of my dad's stories were lost”</li>
+    <li>“I'd be too worried it would be feeding AI”</li>
+    <li>“it's theirs forever”</li>
+    <li>“I don't have anything to play a CD on anymore”</li>
+  </ul>
+
+  <h3>On the emotional stakes</h3>
+  <ul class="swipe">
+    <li>“To hear a voice from the grave”</li>
+    <li>“One day you'll want to hear them again”</li>
+    <li>“Do it, now.”</li>
+    <li>“I so wish that I'd been smart enough to interview them”</li>
+    <li>“I wish I had asked more”</li>
+    <li>“Nobody wants to be forgotten”</li>
+    <li>“You become the keeper of the memories”</li>
+    <li>“they will help each other remember things”</li>
+  </ul>
+
+  <h3>On the buying experience</h3>
+  <ul class="swipe">
+    <li>“I'm still trying to narrow them down myself, and it's quite overwhelming”</li>
+    <li>“Advertised as a gift, but not actually giftable”</li>
+    <li>“Now I'm out $60”</li>
+    <li>“it's not homework haha”</li>
+  </ul>
+</section>
+
+<section class="wrap">
+  <p class="seclab">Execution</p>
+  <h2>Ad angles to test</h2>
+  <p>
+    Each one is built from a specific customer objection or phrase in the corpus above, not from
+    a brainstorm. Hooks are written to be read in a feed.
+  </p>
+
+  <ol class="angles">
+    <li>
+      <span class="hook">“She sent it back. She said it felt like a term paper hanging over her.”</span>
+      <p class="basis">Objection 01 · direct verbatim lift. Opens on the competitor's failure mode, closes on a real interview. The most differentiated thing you can say.</p>
+    </li>
+    <li>
+      <span class="hook">Nobody should have to do homework to be remembered.</span>
+      <p class="basis">Objection 01 · category-level reframe. Positions every prompt-based competitor as the old way in five words.</p>
+    </li>
+    <li>
+      <span class="hook">We ask the questions. She just talks. That's the whole thing.</span>
+      <p class="basis">Objection 01 + “we do the asking” gap. States the mechanism plainly — the DIY crowd's stated ideal, done for them.</p>
+    </li>
+    <li>
+      <span class="hook">Her stories shouldn't expire when the subscription does.</span>
+      <p class="basis">Objection 02 · renewal trap. Aimed squarely at the single biggest driver of negative reviews in the category.</p>
+    </li>
+    <li>
+      <span class="hook">Download every recording, every word, any time. Even if you cancel.</span>
+      <p class="basis">Objection 03 · custody. Zero competitive coverage. Strongest angle for the genealogy segment, who evaluate archives on retrievability.</p>
+    </li>
+    <li>
+      <span class="hook">Your mother's voice will never train anyone's AI. That's in writing.</span>
+      <p class="basis">Objection 04 · rights and trust. A promise that gets more valuable every time a competitor advertises its AI biographer.</p>
+    </li>
+    <li>
+      <span class="hook">The last family recording we found was on a CD. Nobody owns a CD player.</span>
+      <p class="basis">Objection 03 · format obsolescence, near-verbatim. Sells permanence through a concrete loss the audience has already lived.</p>
+    </li>
+    <li>
+      <span class="hook">Bring the photo albums. The pictures ask better questions than we do.</span>
+      <p class="basis">The 42-point interview-craft comment. Product-led, and true — no competitor advertises photo-triggered prompting.</p>
+    </li>
+    <li>
+      <span class="hook">Record them together. They finish each other's stories.</span>
+      <p class="basis">Two-person sessions · an unserved request made publicly to Remento. Doubles the gift's perceived value at the same price.</p>
+    </li>
+    <li>
+      <span class="hook">He says he doesn't have any stories. Give us an hour with him.</span>
+      <p class="basis">Persona angle, dads · the segment Kindred Tales is testing and the leaders ignore. Confidence in the interview is the proof.</p>
+    </li>
+  </ol>
+
+  <details>
+    <summary>What this research could not establish</summary>
+    <ul class="plain">
+      <li><strong>Spend and performance.</strong> Meta publishes no impression or spend data for
+        commercial ads. Ad counts indicate emphasis, never budget, and nothing here tells you which
+        creative actually converts.</li>
+      <li><strong>Full Storyworth creative.</strong> 100 of a reported 303 active US ads were captured;
+        the dominant-headline share is measured on that sample.</li>
+      <li><strong>Pricing.</strong> Current list prices were not verified against the vendors' own sites.
+        The $99/mo and $60 figures quoted are customer claims from Reddit, at unknown dates.</li>
+      <li><strong>Foundry's own knowledge graph.</strong> The knowledge layer was unreachable during this
+        run (kg-pull timeout), so no prior internal work on this category or these positioning patterns
+        was consulted. Worth re-running once it is back —
+        <a href="https://foundry-status-5bzbfbtcxa-uc.a.run.app">status</a>.</li>
+      <li><strong>X sampling.</strong> X has no keyword-search endpoint on the API used, so posts were
+        surfaced via site-scoped web search. That biases toward indexed, higher-engagement posts and
+        cannot support claims about volume or sentiment distribution on the platform.</li>
+    </ul>
+  </details>
+</section>
+
+</main>
+
+<footer class="wrap">
+  <p>
+    Voice-of-customer brief · memory book and audio archive category · compiled 16 August 2026.
+    Sources: 51 Reddit threads and 967 comments across 13 subreddits; 118 X posts; 187 active US Meta
+    ads plus a 42-advertiser category sweep. All quotations verbatim and linked to source.
+  </p>
+</footer>
+</body>
+</html>
