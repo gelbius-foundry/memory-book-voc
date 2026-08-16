@@ -66,9 +66,22 @@
   /* ---------- masthead ---------- */
   header.mast{
     border-bottom:1px solid var(--rule);
-    padding:var(--s6) 0 var(--s5);
+    padding:var(--s4) 0 var(--s5);
     margin-bottom:var(--s5);
   }
+  .byline{
+    display:flex;align-items:baseline;flex-wrap:wrap;gap:.45rem;
+    font-family:var(--mono);font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--muted);
+    padding-bottom:var(--s3);margin-bottom:var(--s5);
+    border-bottom:1px solid var(--rule);
+  }
+  .byline a{
+    color:var(--ink);text-decoration:none;
+    border-bottom:1px solid var(--accent);padding-bottom:1px;
+  }
+  .byline a:hover{color:var(--accent)}
+  .byline .mark{color:var(--accent);letter-spacing:.2em}
   .kicker{
     font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
     color:var(--accent);display:flex;flex-wrap:wrap;gap:.9rem;margin-bottom:var(--s3);
@@ -224,6 +237,11 @@
 
 <header class="mast">
   <div class="wrap">
+    <p class="byline">
+      <span class="mark">◆</span>
+      <span>Prepared by</span>
+      <a href="https://foundrysolutions.ai/">Foundry Solutions</a>
+    </p>
     <div class="kicker">
       <span>Voice-of-customer brief</span>
       <span>Memory book &amp; audio archive</span>
@@ -1001,6 +1019,7 @@
     Sources: 51 Reddit threads and 967 comments across 13 subreddits; 118 X posts; 187 active US Meta
     ads plus a 42-advertiser category sweep. All quotations verbatim and linked to source.
   </p>
+  <p>Prepared by <a href="https://foundrysolutions.ai/">Foundry Solutions</a>.</p>
 </footer>
 </body>
 </html>
