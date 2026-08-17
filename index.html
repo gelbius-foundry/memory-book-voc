@@ -107,6 +107,47 @@
 
   /* ---------- sections ---------- */
   section{margin:0 0 var(--s6)}
+  section[id],div.finding[id]{scroll-margin-top:1.5rem}
+
+  /* ---------- executive summary takeaways ---------- */
+  ul.takeaways{list-style:none;padding:0;margin:var(--s4) 0;display:grid;gap:var(--s3)}
+  ul.takeaways li{
+    display:grid;grid-template-columns:auto 1fr;gap:.75rem;align-items:baseline;
+    padding-bottom:var(--s3);border-bottom:1px solid var(--rule);
+  }
+  ul.takeaways li:last-child{border-bottom:none;padding-bottom:0}
+  ul.takeaways li::before{
+    content:"◆";color:var(--accent);font-size:.6rem;line-height:1.9;
+  }
+  ul.takeaways p{margin:0}
+  .jump{
+    display:inline-block;margin-top:.3rem;
+    font-family:var(--mono);font-size:.63rem;letter-spacing:.11em;text-transform:uppercase;
+    text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px;
+  }
+  .jump:hover{border-bottom-color:var(--accent)}
+
+  /* ---------- contents ---------- */
+  nav.contents{margin:0 0 var(--s6)}
+  ol.toc{
+    list-style:none;counter-reset:toc;padding:0;margin:var(--s3) 0 0;
+    display:grid;gap:1px;background:var(--rule);
+    border:1px solid var(--rule);border-radius:4px;overflow:hidden;
+  }
+  ol.toc li{counter-increment:toc;background:var(--surface)}
+  ol.toc a{
+    display:grid;grid-template-columns:2.2rem 1fr;gap:.7rem;align-items:baseline;
+    padding:.68rem .9rem;text-decoration:none;color:var(--ink);
+  }
+  ol.toc a::before{
+    content:counter(toc,decimal-leading-zero);
+    font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;color:var(--muted);
+    font-variant-numeric:tabular-nums;
+  }
+  ol.toc a:hover{background:var(--accent-soft)}
+  ol.toc a:hover::before{color:var(--accent)}
+  ol.toc .t{font-weight:620;letter-spacing:-.012em}
+  ol.toc .d{display:block;font-size:.88rem;color:var(--muted);margin-top:.05rem}
   .seclab{
     font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
     color:var(--muted);margin:0 0 var(--s2);
@@ -139,6 +180,24 @@
   .attrib a:hover{color:var(--accent)}
 
   /* ---------- ranked findings ---------- */
+  ol.objindex{
+    list-style:none;counter-reset:oi;padding:0;margin:0 0 var(--s4);
+    display:flex;flex-wrap:wrap;gap:.4rem;
+  }
+  ol.objindex li{counter-increment:oi}
+  ol.objindex a{
+    display:inline-flex;align-items:baseline;gap:.4rem;
+    font-size:.86rem;text-decoration:none;color:var(--ink);
+    background:var(--surface);border:1px solid var(--rule);border-radius:3px;
+    padding:.28rem .55rem;
+  }
+  ol.objindex a::before{
+    content:counter(oi,decimal-leading-zero);
+    font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;color:var(--muted);
+  }
+  ol.objindex a:hover{background:var(--accent-soft);border-color:var(--accent)}
+  ol.objindex a:hover::before{color:var(--accent)}
+
   .finding{
     border-top:1px solid var(--rule);
     padding:var(--s4) 0 0;margin:0 0 var(--s4);
@@ -265,8 +324,8 @@
 
 <main>
 
-<section class="wrap">
-  <p class="seclab">The read</p>
+<section class="wrap" id="summary">
+  <p class="seclab">Executive summary</p>
   <h2>What the evidence says</h2>
   <p class="lede">
     Demand in this category is driven by <em class="term">anticipatory regret</em>, not by
@@ -275,20 +334,62 @@
     That emotion is abundant, freely expressed, and almost entirely unmonetised by
     the current message set.
   </p>
-  <p>
-    The category's structural weakness is that every major product converts that urgent
-    emotional impulse into <strong>a recurring obligation for an elderly person</strong>.
-    The single most repeated complaint in the corpus is not price, quality, or trust — it is
-    that the gift feels like schoolwork. Recipients quit, and the buyer is the one left
-    holding the disappointment.
-  </p>
-  <p>
-    Meanwhile the ad market has consolidated onto two claims. Storyworth runs
-    <em class="term">preservation</em> ("Preserve your family's stories", on 91 of its 100 active
-    US ads). Remento runs <em class="term">effort removal</em> ("No Writing Required", on 65 of 66).
-    Both are already contested, and neither addresses the three objections that actually kill
-    the purchase on Reddit: renewal traps, no export, and unclear rights over the family's words.
-  </p>
+
+  <ul class="takeaways">
+    <li>
+      <div>
+        <p><strong>The product breaks where the emotion peaks.</strong> Every major service converts
+          an urgent impulse into a recurring obligation for an elderly person. The single most
+          repeated complaint in the corpus is not price, quality, or trust — it is that the gift
+          feels like schoolwork. Recipients quit; the buyer eats the disappointment.</p>
+        <a class="jump" href="#f-homework">The homework problem →</a>
+      </div>
+    </li>
+    <li>
+      <div>
+        <p><strong>Three of the top four objections have zero advertising coverage.</strong> No
+          competitor in the pull advertises export and ownership, rights and AI-training, or
+          freedom from a renewal clock — despite all three being live, repeated, deal-killing
+          concerns on Reddit.</p>
+        <a class="jump" href="#opening">Where the opening is →</a>
+      </div>
+    </li>
+    <li>
+      <div>
+        <p><strong>The ad market has consolidated onto two claims.</strong> Storyworth runs
+          preservation ("Preserve your family's stories", 91 of 100 active US ads); Remento runs
+          effort removal ("No Writing Required", 65 of 66, at 98% video). Neither addresses what
+          actually kills the purchase.</p>
+        <a class="jump" href="#meta">The Meta message map →</a>
+      </div>
+    </li>
+    <li>
+      <div>
+        <p><strong>The obvious wedge is already taken.</strong> "No writing required" answers the
+          number-one complaint — and Memorygram runs a near-identical line while Kindred Tales
+          advertises its own "Speech-to-Story" against Remento's trademarked one. Entering there
+          means fighting a Shark Tank–credentialed incumbent for words it already owns.</p>
+        <a class="jump" href="#meta">Why it's a trap →</a>
+      </div>
+    </li>
+    <li>
+      <div>
+        <p><strong>The buyer has refused to comparison-shop.</strong> One r/Genealogy commenter names
+          fourteen competitors unprompted and gives up as "quite overwhelming". A feature-comparison
+          entry strategy is a losing move; what breaks the tie is one legible promise that resolves
+          a known fear.</p>
+        <a class="jump" href="#competitors">The competitive set →</a>
+      </div>
+    </li>
+    <li>
+      <div>
+        <p><strong>Reddit is the evaluation surface; X is not.</strong> Reddit carries prices,
+          refunds and named competitors. X carries the emotion but almost no purchase deliberation,
+          and incumbent accounts are dormant. That should decide where paid budget goes.</p>
+        <a class="jump" href="#channel">The channel read →</a>
+      </div>
+    </li>
+  </ul>
 
   <div class="callout">
     <span class="clab">Positioning thesis</span>
@@ -303,7 +404,31 @@
   </div>
 </section>
 
-<section class="wrap">
+<nav class="wrap contents" id="contents" aria-label="Table of contents">
+  <p class="seclab">Contents</p>
+  <ol class="toc">
+    <li><a href="#method"><span><span class="t">How this was built</span>
+      <span class="d">Sources, corpus size, and what the numbers can and can't support</span></span></a></li>
+    <li><a href="#demand"><span><span class="t">The emotion that actually moves people</span>
+      <span class="d">Why people buy: the countdown, the saved voicemail, and the storyteller segment</span></span></a></li>
+    <li><a href="#friction"><span><span class="t">Why these products fail their buyers</span>
+      <span class="d">Seven objections ranked by frequency and heat, with verbatim evidence</span></span></a></li>
+    <li><a href="#competitors"><span><span class="t">The buyer is drowning, not choosing</span>
+      <span class="d">Fourteen-plus competitors, the DIY substitute, and what interviewers know</span></span></a></li>
+    <li><a href="#channel"><span><span class="t">X is not where this category lives</span>
+      <span class="d">What each platform is actually good for, and what that means for media</span></span></a></li>
+    <li><a href="#meta"><span><span class="t">The messages incumbents are actually buying</span>
+      <span class="d">187 active Meta ads: headline share, video mix, offers, and the claim map</span></span></a></li>
+    <li><a href="#opening"><span><span class="t">Where the opening actually is</span>
+      <span class="d">Objections crossed against live claims, and a positioning statement to test</span></span></a></li>
+    <li><a href="#swipe"><span><span class="t">Customer language, verbatim</span>
+      <span class="d">Swipe file of liftable phrases, grouped by theme</span></span></a></li>
+    <li><a href="#angles"><span><span class="t">Ad angles to test</span>
+      <span class="d">Ten hooks, each built from a specific objection in the corpus</span></span></a></li>
+  </ol>
+</nav>
+
+<section class="wrap" id="method">
   <p class="seclab">Method</p>
   <h2>How this was built</h2>
   <p>
@@ -333,7 +458,7 @@
   </div>
 </section>
 
-<section class="wrap">
+<section class="wrap" id="demand">
   <p class="seclab">Demand</p>
   <h2>The emotion that actually moves people</h2>
   <p>
@@ -394,11 +519,20 @@
   </blockquote>
 </section>
 
-<section class="wrap">
+<section class="wrap" id="friction">
   <p class="seclab">Friction · ranked by frequency and heat</p>
   <h2>Why these products fail their buyers</h2>
+  <ol class="objindex">
+    <li><a href="#f-homework">It becomes homework</a></li>
+    <li><a href="#f-renewal">The renewal trap</a></li>
+    <li><a href="#f-custody">No way to get the material out</a></li>
+    <li><a href="#f-rights">Rights, and AI training</a></li>
+    <li><a href="#f-print">The book disappoints</a></li>
+    <li><a href="#f-gifting">Not actually giftable</a></li>
+    <li><a href="#f-prompts">The prompts can wound</a></li>
+  </ol>
 
-  <div class="finding">
+  <div class="finding" id="f-homework">
     <div class="fhead"><span class="rank">01</span><h3>It becomes homework</h3></div>
     <div class="meter"><i style="--v:100%"></i></div>
     <p class="evid">Most-repeated complaint · appears across r/gifts, r/AgingParents, r/Genealogy, r/dementia</p>
@@ -426,7 +560,7 @@
     </blockquote>
   </div>
 
-  <div class="finding">
+  <div class="finding" id="f-renewal">
     <div class="fhead"><span class="rank">02</span><h3>The renewal trap</h3></div>
     <div class="meter warn"><i style="--v:86%"></i></div>
     <p class="evid">Described as the single biggest driver of negative reviews · r/GiftIdeas, r/Genealogy, r/dementia</p>
@@ -454,7 +588,7 @@
     </blockquote>
   </div>
 
-  <div class="finding">
+  <div class="finding" id="f-custody">
     <div class="fhead"><span class="rank">03</span><h3>You can't get your family's material back out</h3></div>
     <div class="meter warn"><i style="--v:78%"></i></div>
     <p class="evid">Export, backup, and platform-death risk · r/AgingParents, r/Genealogy, r/dementia</p>
@@ -493,7 +627,7 @@
     </blockquote>
   </div>
 
-  <div class="finding">
+  <div class="finding" id="f-rights">
     <div class="fhead"><span class="rank">04</span><h3>Who owns the words — and does it train a model?</h3></div>
     <div class="meter warn"><i style="--v:62%"></i></div>
     <p class="evid">Terms-of-service and AI-training objections · r/GiftIdeas, r/Genealogy</p>
@@ -521,7 +655,7 @@
     </p>
   </div>
 
-  <div class="finding">
+  <div class="finding" id="f-print">
     <div class="fhead"><span class="rank">05</span><h3>The physical book disappoints</h3></div>
     <div class="meter"><i style="--v:54%"></i></div>
     <p class="evid">Print quality, damage in transit, black-and-white photos, per-copy cost</p>
@@ -543,7 +677,7 @@
     </blockquote>
   </div>
 
-  <div class="finding">
+  <div class="finding" id="f-gifting">
     <div class="fhead"><span class="rank">06</span><h3>Sold as a gift, doesn't work as one</h3></div>
     <div class="meter"><i style="--v:38%"></i></div>
     <p class="evid">Single strong signal, but a clean and fixable product failure</p>
@@ -555,7 +689,7 @@
     </blockquote>
   </div>
 
-  <div class="finding">
+  <div class="finding" id="f-prompts">
     <div class="fhead"><span class="rank">07</span><h3>The prompts can wound</h3></div>
     <div class="meter"><i style="--v:32%"></i></div>
     <p class="evid">Lower frequency, high severity — a churn and reputation risk</p>
@@ -573,7 +707,7 @@
   </div>
 </section>
 
-<section class="wrap">
+<section class="wrap" id="competitors">
   <p class="seclab">Competitive set</p>
   <h2>The buyer is drowning, not choosing</h2>
   <p>
@@ -645,7 +779,7 @@
   </blockquote>
 </section>
 
-<section class="wrap">
+<section class="wrap" id="channel">
   <p class="seclab">Channel note</p>
   <h2>X is not where this category lives</h2>
   <p>
@@ -679,7 +813,7 @@
   </p>
 </section>
 
-<section class="wide">
+<section class="wide" id="meta">
   <p class="seclab">Appendix · Meta Ad Library</p>
   <h2>The messages incumbents are actually buying</h2>
   <p class="lede" style="max-width:68ch">
@@ -830,7 +964,7 @@
   </div>
 </section>
 
-<section class="wrap">
+<section class="wrap" id="opening">
   <p class="seclab">Recommendation</p>
   <h2>Where the opening actually is</h2>
   <p>
@@ -891,7 +1025,7 @@
   </p>
 </section>
 
-<section class="wrap">
+<section class="wrap" id="swipe">
   <p class="seclab">Swipe file</p>
   <h2>Customer language, verbatim</h2>
   <p>
@@ -939,7 +1073,7 @@
   </ul>
 </section>
 
-<section class="wrap">
+<section class="wrap" id="angles">
   <p class="seclab">Execution</p>
   <h2>Ad angles to test</h2>
   <p>
